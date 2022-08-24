@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marathon.Core", "Marathon.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marathon.Web", "Marathon.Web\Marathon.Web.csproj", "{9CB9CFF4-FF42-4078-A312-8638B78F3B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marathon.UmbracoModels", "Marathon.UmbracoModels\Marathon.UmbracoModels.csproj", "{52B939B7-AB28-4E12-99BF-F5139526CFD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marathon.UmbracoModels", "Marathon.UmbracoModels\Marathon.UmbracoModels.csproj", "{52B939B7-AB28-4E12-99BF-F5139526CFD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BB54FA12-ABF6-4B4E-A8D1-C6EEDCC380AE}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
