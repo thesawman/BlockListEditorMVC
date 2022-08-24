@@ -1,0 +1,33 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListModel>
+@{
+    if (Model?.Any() != true) { return; }
+}
+<div class="umb-block-list">
+    @foreach (var block in Model)
+    {
+        if (block?.ContentUdi == null) { continue; }
+        var data = block.Content;
+
+        //@await Html.PartialAsync("blocklist/Components/" + data.ContentType.Alias, block)
+        try
+        {
+            @await Component.InvokeAsync(data.ContentType.Alias, block)
+        }
+        catch (Exception ex)
+        {
+            // stop errors from shutting down the whole page
+            <text>
+                <div class="container">
+                    <div class="alert alert-danger error" role="alert" style="margin-top: 1rem;">
+                        <div class="alert-heading">
+                            <strong>Block List Error</strong>
+                        </div>
+                        <div>
+                            @ex.Message
+                        </div>
+                    </div>
+                </div>
+            </text>
+        }
+    }
+</div>

@@ -1,0 +1,23 @@
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Marathon.Core.BlockList.BlogFeed.Models.BlogFeedModel>
+
+<div class="blogFeedBLE blockList">
+    @if (Model.Teasers?.Count() > 0)
+    {
+        <h2 class="headline">@Model.Headline</h2>
+        <div class="posts">
+        @foreach (var blogPost in Model.Teasers)
+        {
+            <div class="post">
+                <h3>@blogPost.Headline</h3>
+                <img src="@blogPost.ImageUrl" alt="@blogPost.ImageAlt" />
+                <div>@blogPost.Description</div>
+            </div>
+        }
+        </div>
+        if (Model.Button != null) {
+            <div class="actions">
+                <a href="@Model.Button.Url" class="btn btnDefault">@Model.Button.Name</a>
+            </div>
+        }
+    }
+</div>
