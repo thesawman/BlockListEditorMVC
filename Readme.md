@@ -2,6 +2,6 @@
 
 Umbraco Backoffice credentials (make sure to change these if you end up hosting this somewhere!):
 
-* u: johndoe@mydomain.com**
-* p: password!123!**
+* u: johndoe@mydomain.com
+* p: password!123!
 
