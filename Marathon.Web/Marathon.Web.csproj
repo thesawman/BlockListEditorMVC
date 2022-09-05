@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="umbraco\" />
+    <Folder Include="umbraco\Data\" />
   </ItemGroup>
 
   <PropertyGroup>
