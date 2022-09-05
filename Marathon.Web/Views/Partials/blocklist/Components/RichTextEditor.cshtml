@@ -1,9 +1,11 @@
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Web.Common.PublishedModels.RichTextBle>
+@using Marathon.Core.BlockList.Common.Helper;
+@using Marathon.Core.BlockList.RichTextEditor.Models;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<RTEModel>
 @{
     //*** No backend logic / C# code allowed here! add to the ViewComponent instead ***
 }
 
-<div class="rteBLE blockList">
+<div class="rteBLE blockList" @BLHelper.CommonClasses(Model.CommonSettings)>
     <div class="container">
         @Html.Raw(Model.Content)
     </div>

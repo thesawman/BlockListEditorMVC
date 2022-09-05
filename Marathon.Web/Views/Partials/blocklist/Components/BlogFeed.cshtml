@@ -1,8 +1,9 @@
+@using Marathon.Core.BlockList.Common.Helper;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Marathon.Core.BlockList.BlogFeed.Models.BlogFeedModel>
 @{
     //*** No backend logic / C# code allowed here! add to the ViewComponent instead ***
 }
-<div class="blogFeedBLE blockList">
+<div class="blogFeedBLE blockList @BLHelper.CommonClasses(Model.CommonSettings)">
     @if (Model.Teasers?.Count() > 0)
     {
         <h2 class="headline">@Model.Headline</h2>

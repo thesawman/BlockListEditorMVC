@@ -1,4 +1,5 @@
 ﻿using Marathon.Core.BlockList.BlogFeed.Models;
+using Marathon.Core.BlockList.Models;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Web.Common;
@@ -42,6 +43,7 @@ namespace Marathon.Core.BlockList.BlogFeed.ViewComponents
             }
             //build model from the result
             var myModel = new BlogFeedModel() {
+                CommonSettings = new CommonSettingsModel((CommonBlockListSettings)model.Settings),
                 Headline = content.Headline,
                 Button = content.Button,
                 Teasers = Posts
