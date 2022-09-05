@@ -22,18 +22,23 @@ namespace Marathon.Core.BlockList.BlogFeed.ViewComponents
             if (_umbracoHelperAccessor.TryGetUmbracoHelper(out var umbracoHelper))
             {
                 //UMBRACO FETCHING LOGIC HERE - fetch nodes from umbraco, or anywhere
-                Posts.Add(new BlogTeaserModel()
+                var myBlogIndex = umbracoHelper.ContentAtXPath("//home/blogIndex")?.FirstOrDefault();
+                var blogPostNodes = myBlogIndex?.ChildrenOfType("blogPost")?.OrderByDescending(x => x.CreateDate).Take(content.NumberToPull);
+                if (blogPostNodes?.Count() > 0)
                 {
-                    Headline = "Sample Post 1", Description = "lirem ipsum dolor lum set val", Url = "/sample-post-1/"
-                });
-                Posts.Add(new BlogTeaserModel()
-                {
-                    Headline = "Sample Post 2", Description = "lirem ipsum dolor lum set val", Url = "/sample-post-2/"
-                });
-                Posts.Add(new BlogTeaserModel()
-                {
-                    Headline = "Sample Post 3", Description = "lirem ipsum dolor lum set val", Url = "/sample-post-3/"
-                });
+                    foreach (var blogNode in blogPostNodes)
+                    {
+                        var myBlogNode = (BlogPost)blogNode;
+                        Posts.Add(new BlogTeaserModel()
+                        {
+                            Headline = myBlogNode.Headline,
+                            ImageUrl = myBlogNode?.FeaturedImage?.Url(),
+                            ImageAlt = myBlogNode.FeaturedImage?.Name,
+                            Description = myBlogNode.Teaser,
+                            Url = myBlogNode.Url()
+                        });
+                    }
+                }
             }
             //build model from the result
             var myModel = new BlogFeedModel() {

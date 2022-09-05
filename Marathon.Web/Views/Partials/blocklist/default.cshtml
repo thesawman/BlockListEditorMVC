@@ -1,4 +1,7 @@
+@using Marathon.Core.BlockList;
+@using Microsoft.Extensions.Logging;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListModel>
+@inject ILogger<BlockListRenderer> Logger;
 @{
     if (Model?.Any() != true) { return; }
 }
@@ -28,6 +31,7 @@
                     </div>
                 </div>
             </text>
+            Logger.LogError(ex, $"Block List Error: {data.ContentType.Alias}");
         }
     }
 </div>

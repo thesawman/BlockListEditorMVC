@@ -1,0 +1,41 @@
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<Umbraco.Cms.Web.Common.PublishedModels.BlogFeedBle>>
+@*
+    Default way of rendering a block
+*@
+<div class="blogFeedBLE blockList">
+    @{
+        List<BlogPost> blogPosts = new List<BlogPost>();
+        var myBlogIndex = Umbraco.ContentAtXPath("//home/blogIndex")?.FirstOrDefault();
+    }
+    @if (myBlogIndex != null)
+    {
+        <h2 class="headline">@Model.Content.Headline</h2>
+    
+        //fetch posts
+        var blogPostNodes = myBlogIndex.ChildrenOfType("blogPost").OrderByDescending(x => x.CreateDate).Take(Model.Content.NumberToPull);
+        <div class="posts">
+            @if (blogPostNodes?.Count() > 0)
+            {
+                @foreach (var myBlogNode in blogPostNodes)
+                {
+                    var blogNode = (BlogPost)myBlogNode;
+                    <div class="post">
+                        <h3>@blogNode.Headline</h3>
+                        @if (blogNode.FeaturedImage != null)
+                        {
+                            <img src="@(blogNode.FeaturedImage.Url())?quality=80" alt="@blogNode.FeaturedImage.Name" />
+                        }
+                        <div>@blogNode.Teaser</div>
+                    </div>
+                }
+            }
+        </div>
+        if (Model.Content.Button != null)
+        {
+            <div class="actions">
+                <a href="@Model.Content.Button.Url" class="btn btnDefault">@Model.Content.Button.Name</a>
+            </div>
+        }
+    }
+</div>

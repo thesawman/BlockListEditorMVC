@@ -1,0 +1,8 @@
+@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem<Umbraco.Cms.Web.Common.PublishedModels.RichTextBle>>;
+
+@*
+    Default way of rendering a block
+*@
+@Html.Raw(Model.Content.Content)
+
