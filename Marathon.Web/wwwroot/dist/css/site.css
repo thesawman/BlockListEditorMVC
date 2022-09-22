@@ -1,0 +1,54 @@
+.pageContent{
+    margin: 75px 0;
+}
+
+
+
+.rteBLE {
+    margin-bottom: 50px;
+}
+
+
+.blogFeedBLE {
+    margin-bottom: 50px;
+}
+.blogFeedBLE > .headline {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 75px;
+}
+.blogFeedBLE .posts {
+    margin-top: 30px;
+}
+.blogFeedBLE .posts .post {
+    text-align: center;
+}
+.blogFeedBLE .posts .post h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+.blogFeedBLE .posts .post img {
+    height: 150px;
+    width: 75%;
+    display: inline-block;
+    background-color: #dddddd;
+    margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+    .blogFeedBLE .posts {
+        display: flex;
+    }
+    .blogFeedBLE .posts .post {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}
+.blogFeedBLE .actions {
+    text-align: center;
+    margin-top: 50px;
+}
+    .blogFeedBLE .actions .btn {
+        background-color: #219ff1;
+        color: white;
+    }
